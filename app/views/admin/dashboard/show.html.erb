@@ -1,2 +1,13 @@
-<h1>Admin::Dashboard#show</h1>
-<p>Find me in app/views/admin/dashboard/show.html.erb</p>
+<h1>Your Admin Dashboard</h1>
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title"> Total Categories: <%= @total_categories %></h5>
+  </div>
+</div>
+
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title"> Total Products: <%= @total_products %></h5>
+    <a href="/admin/products" class="btn btn-success">Review Products</a>
+  </div>
+</div>

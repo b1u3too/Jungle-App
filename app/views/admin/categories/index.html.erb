@@ -1,0 +1,18 @@
+<section class="admin-product-index">
+
+  <header class="page-header">
+    <h1>Admin &raquo; All Categories</h1>
+  </header>
+
+  <div class="well">
+    <%= link_to '+ New Category', [:new, :admin, :category], class: 'btn btn-success' %>
+  </div>
+
+  <ul class="list-group">
+    <li class="list-group-item list-group-item-success"">Categories</li>
+    <% @categories.each do |category| %>
+      <li class="list-group-item"><%= category.name %></li>
+    <% end %>
+  </ul>
+
+</section>

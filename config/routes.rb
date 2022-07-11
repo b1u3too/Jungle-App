@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'users/new'
   root to: 'products#index'
 
   resources :about, only: [:index]
@@ -12,10 +11,7 @@ Rails.application.routes.draw do
     post   :remove_item
   end
 
-  resource :user, only: [:new, :create] do
-    get    :sign_up  #users#new?
-    post   :users    #users#create?
-  end
+  resource :user, only: [:new, :create]
 
   resources :orders, only: [:create, :show]
 

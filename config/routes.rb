@@ -11,6 +11,11 @@ Rails.application.routes.draw do
     post   :remove_item
   end
 
+  resource :user, only: [:new, :create] do
+    get    :sign_up  #users#new?
+    post   :users    #users#create?
+  end
+
   resources :orders, only: [:create, :show]
 
   namespace :admin do

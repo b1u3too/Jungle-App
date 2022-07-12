@@ -14,6 +14,11 @@ Rails.application.routes.draw do
   resource :user, only: [:new, :create]
   get 'signup', to: 'users#new'
 
+  resource :session, only: [:new, :create, :destroy]
+  get 'login', to: 'sessions#new'
+  post 'login', to: 'sessions#create'
+  get 'logout', to: 'sessions#destroy'
+
   resources :orders, only: [:create, :show]
 
   namespace :admin do

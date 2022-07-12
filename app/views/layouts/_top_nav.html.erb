@@ -59,9 +59,13 @@
             User Options
           </a>
           <ul class="dropdown-menu dropdown-menu-dark">
-            <li><%= link_to 'Sign Up', '/signup', class: "nav-link" %></li>
-            <li><%= link_to 'Log In', '/login', class: "nav-link" %></li>
-            <li><%= link_to 'Log Out', '/logout', class: "nav-link" %></li>
+            <% if current_user %>
+              <li>Hello, <%= current_user.first_name %>!</li>
+              <li><%= link_to 'Log Out', '/logout', class: "nav-link" %></li>
+            <% else %>
+              <li><%= link_to 'Sign Up', '/signup', class: "nav-link" %></li>
+              <li><%= link_to 'Log In', '/login', class: "nav-link" %></li>
+            <% end %>
           </ul>
         </li>
         <li class="nav-item dropdown">

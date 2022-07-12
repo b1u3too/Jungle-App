@@ -9,6 +9,7 @@ class UsersController < ApplicationController
       session[:user_id] = user.id
       redirect_to '/'
     else
+      flash.alert = "Error! Unable to create account, please try again."
       redirect_to '/user/new'
     end
   end

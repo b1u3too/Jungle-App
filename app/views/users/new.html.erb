@@ -1,4 +1,10 @@
-<h1>Sign Up for Jungle</h1>
+<header class="page-header">
+  <h1>Sign Up for Jungle</h1>
+</header>
+
+<% if flash[:alert] %>
+  <div class="alert alert-warning"><%= flash[:alert] %></div>
+<% end %>
 
 <%= form_for :user, url: '/user' do |form| %>
 

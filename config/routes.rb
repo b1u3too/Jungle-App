@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   end
 
   resource :user, only: [:new, :create]
+  get 'signup', to: 'users#new'
 
   resources :orders, only: [:create, :show]
 

@@ -1,0 +1,27 @@
+<header class="page-header">
+  <h1>Sign In</h1>
+</header>
+
+<% if flash[:alert] %>
+  <div class="alert alert-warning"><%= flash[:alert] %></div>
+<% end %>
+
+<%= form_tag('/login', { class: "card" }) do %>
+
+  <div class="card-body">
+
+    <div class="form-group">
+      <%= label_tag "Email: " %>
+      <%= email_field_tag :email, nil, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= label_tag "Password: " %>
+      <%= password_field_tag :password, nil, class: "form-control"%>
+    </div>
+
+    <%= submit_tag "Submit", class: 'btn btn-info' %>
+
+  </div>
+
+<% end %>

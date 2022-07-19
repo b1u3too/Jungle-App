@@ -23,8 +23,6 @@ RSpec.describe Product, type: :model do
     it 'will block product save if no price is present' do
       product = Product.new(name: "Thomas Sanders", price_cents: nil, quantity: 1, category: @category)
       product.save
-      puts product.inspect
-      puts "ERRORS: #{product.errors.full_messages}"
 
       expect(product.errors.full_messages).not_to be_empty
     end

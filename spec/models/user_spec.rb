@@ -60,5 +60,19 @@ RSpec.describe User, type: :model do
       second_user.save
       expect(second_user.errors.full_messages).not_to be_empty
     end
+
+    it "should error if the password is less than 10 characters long" do
+      user =  User.new(first_name: "Keanu", last_name: "Reeves", email: "keanuizcool@icloud.me", password: "kewlkewll", password_confirmation: "kewlkewll")
+      user.save
+
+      expect(user.errors.full_messages).not_to be_empty
+    end
+
+    it "should NOT error if the password is 10 or more characters long" do
+      user =  User.new(first_name: "Keanu", last_name: "Reeves", email: "keanuizcool@icloud.me", password: "kewlkewlll", password_confirmation: "kewlkewlll")
+      user.save
+
+      expect(user.errors.full_messages).to be_empty
+    end
   end
 end

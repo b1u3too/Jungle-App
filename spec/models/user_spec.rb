@@ -75,4 +75,15 @@ RSpec.describe User, type: :model do
       expect(user.errors.full_messages).to be_empty
     end
   end
+
+  describe '.authenticate_with_credentials' do
+    it "should return the user if their email and password are valid credentials"
+
+    it "should return nil if either the user is not found or credentials are not valid"
+
+    it "should ignore extra spaces around the email address"
+
+    it "should ignore casing of the email address"
+
+  end
 end

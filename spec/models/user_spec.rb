@@ -77,9 +77,19 @@ RSpec.describe User, type: :model do
   end
 
   describe '.authenticate_with_credentials' do
-    it "should return the user if their email and password are valid credentials"
+    before do
+      @user = User.create(:first_name => "Keanu", :last_name => "Reeves", :email => "keanuizcool@icloud.me", :password => "kewlkewlll", :password_confirmation => "kewlkewlll")
+    end
 
-    it "should return nil if either the user is not found or credentials are not valid"
+    it "should return the user if their email and password are valid credentials" do
+      test_user = User.authenticate_with_credentials("keanuizcool@icloud.me", "kewlkewlll")
+      expect(test_user).to eq(@user)
+    end
+
+    it "should return nil if either the user is not found or credentials are not valid" do
+      test_user = User.authenticate_with_credentials("veryFAKEemail@icloud.me", "kewlkewlll")
+      expect(test_user).to eq(nil)
+    end
 
     it "should ignore extra spaces around the email address"
 

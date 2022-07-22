@@ -91,9 +91,14 @@ RSpec.describe User, type: :model do
       expect(test_user).to eq(nil)
     end
 
-    it "should ignore extra spaces around the email address"
+    it "should ignore extra spaces around the email address" do
+      test_user = User.authenticate_with_credentials("      keanuizcool@icloud.me        ", "kewlkewlll")
+      expect(test_user).to eq(@user)
+    end
 
-    it "should ignore casing of the email address"
-
+    it "should ignore casing of the email address" do
+      test_user = User.authenticate_with_credentials("keanuIZcool@ICLOUD.ME", "kewlkewlll")
+      expect(test_user).to eq(@user)
+    end
   end
 end

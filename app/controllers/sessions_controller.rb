@@ -4,21 +4,19 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.find_by_email(params[:email])
-    #if user exists and password is correct
-    if user && user.authenticate(params[:password])
-      #set a cookie containing the user id
+    user = User.authenticate_with_credentials(params[:email], params[:password])
+
+    if user
       session[:user_id] = user.id
       redirect_to '/'
     else
-      flash.alert = "Invalid credentials provided"
+      flash.alert = "invalid credentials, try again"
       redirect_to '/login'
     end
   end
 
   def destroy
     session[:user_id] = nil
-    @current_user = nil
     redirect_to '/login', notice: 'You have logged out'
   end
 end
